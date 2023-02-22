@@ -27,7 +27,13 @@ Route::get('about', [TP1Controller::class,'about'])->name('about');
 
 Route::get('contact', [TP1Controller::class,'contact'])->name('contact');
 
-Route::get('post', [TP1Controller::class,'post'])->name('post');
+
+
+
+Route::get('post', [TP1Controller::class,'post'])->name('post')->middleware('auth');;
+
+
+
 
 Route::get('etudiant', [EtudiantController::class,'index'])->name('etudiant');
 
@@ -41,12 +47,20 @@ Route::put('edit/{etudiant}', [EtudiantController::class, 'update']);
 Route::delete('edit/{etudiant}', [EtudiantController::class, 'destroy']);
 
 
-use App\Http\Controllers\CustomAuthController ;
-Route::get('/login', [CustomAuthController::class, 'index'])->name('login');
-Route::post('/login', [CustomAuthController::class, 'authentication'])->name(
-'login.authentication');
-Route::get('/registration', [CustomAuthController::class, 'create'])->name(
-'user.registration');
-Route::post('/registration-store', [CustomAuthController::class, 'store'])->name(
-'user.store');
+use App\Http\Controllers\CustomAuthController;
 
+Route::get('registration', [CustomAuthController::class, 'create'])->name('user.create');
+Route::post('registration', [CustomAuthController::class, 'store'])->name('user.store');
+Route::get('login', [CustomAuthController::class, 'index'])->name('login');
+Route::post('login', [CustomAuthController::class, 'authentication'])->name('user.auth');
+Route::get('logout', [CustomAuthController::class, 'logout'])->name('logout');
+
+Route::get('dashboard', [CustomAuthController::class, 'dashboard'])->name('dashboard');
+
+Route::get('forgot-password', [CustomAuthController::class, 'forgotPassword'])->name('forgot.pass');
+Route::post('forgot-password', [CustomAuthController::class, 'tempPassword'])->name('temp.pass');
+Route::get('new-password/{user}/{tempPassword}', [CustomAuthController::class, 'newPassword'])->name('new.pass');
+Route::post('new-password/{user}/{tempPassword}', [CustomAuthController::class, 'storeNewPassword'])->name('store.pass');
+
+use App\Http\Controllers\LocalizationController;
+Route::get('/lang/{locale}', [LocalizationController::class, 'index'])->name('lang');

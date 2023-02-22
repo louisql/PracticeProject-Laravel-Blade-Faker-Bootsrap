@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('master')
 @section('title', 'Login')
 @section('content')
 <main class="login-form">

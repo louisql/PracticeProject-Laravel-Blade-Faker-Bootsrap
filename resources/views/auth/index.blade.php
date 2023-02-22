@@ -1,13 +1,26 @@
-@extends('layouts.app')
+@extends('master')
 @section('title', 'Login')
 @section('content')
+<header class="masthead" style="background-image: url({{ asset('assets/img/about-bg.jpg') }})">
+
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h1>@lang('lang.login')</h1>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
 <main class="login-form">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-4 pt-4">
                 <div class="card">
                     <h3 class="card-header text-center">
-                        Login
+                    @lang('lang.login')
                     </h3>
                     <div class="card-body">
                         @if(session('success'))
@@ -46,7 +59,7 @@
                                 @endif
                             </div>
                             <div class="d-grid mx-auto">
-                                <input type="submit" value="Connecter" class="btn btn-dark btn-block">
+                                <input type="submit" value="@lang('lang.login')" class="btn btn-dark btn-block">
                             </div>
                         </form>
                         <a href="{{route('forgot.pass')}}">Mot de passe oublié</a>

@@ -42,9 +42,48 @@ class CustomAuthController extends Controller
         $user->fill($request->all());
         $user->password = Hash::make($request->password);
         $user->save();
+         return redirect(route('login'))->withSuccess('User enregistré');
 
     }
 
+    public function authentication(Request $request){
+        $request->validate([
+            'email'=> 'required|email|exists:users',
+            'password' => 'required|min:6|max:20'
+        ]);
+
+        $credentials = $request->only('email', 'password');
+
+        if(!Auth::validate($credentials)):
+            return redirect(route('login'))
+                      ->withErrors(trans('auth.failed'))
+                      ->withInput();
+         endif;
+
+         $user = Auth::getProvider()->retrieveByCredentials($credentials);
+     
+         Auth::login($user, $request->get('remember'));
+
+         return redirect()->intended('dashboard')->withSuccess('Signed in');
+    }
+
+    public function dashboard(){
+
+        
+        if(Auth::check()){
+            $name = Auth::user()->name;
+           return view('dashboard', ['name' =>$name]); 
+        }
+        return redirect(route('login'))->withErrors('Vous n\'êtes pas autorisé à accéder');
+    }
+
+    public function logout(){
+        Session::flush();
+        Auth::logout();
+
+        return redirect(route('login'));
+    }
+    
     // /**
     //  * Store a newly created resource in storage.
     //  *
