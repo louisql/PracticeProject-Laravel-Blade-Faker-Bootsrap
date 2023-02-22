@@ -40,3 +40,13 @@ Route::get('edit/{etudiant}', [EtudiantController::class, 'edit'])->name('edit')
 Route::put('edit/{etudiant}', [EtudiantController::class, 'update']);
 Route::delete('edit/{etudiant}', [EtudiantController::class, 'destroy']);
 
+
+use App\Http\Controllers\CustomAuthController ;
+Route::get('/login', [CustomAuthController::class, 'index'])->name('login');
+Route::post('/login', [CustomAuthController::class, 'authentication'])->name(
+'login.authentication');
+Route::get('/registration', [CustomAuthController::class, 'create'])->name(
+'user.registration');
+Route::post('/registration-store', [CustomAuthController::class, 'store'])->name(
+'user.store');
+
