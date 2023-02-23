@@ -2,16 +2,21 @@
 
 @section('title', 'Ajouter')
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-12 text-center mt-2">
-            <h1 class="display-one ">
-                Ajouter un Post
-            </h1>
+<header class="masthead" style="background-image: url({{ asset('assets/img/home-bg.jpg') }})">
+
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1> Créer un nouvel article</h1>
         </div>
+      </div>
     </div>
-    <hr>
-    <div class="row justify-content-center">
+  </div>
+</header>
+
+
+<div class="row justify-content-center">
         <div class="col-6">
             <div class="card">
                 <form method="post">
@@ -21,21 +26,20 @@
                     </div>
                     <div class="card-body">
                         <div class="control-group col-12">
-                            <label for="title">Titre du message</label>
+                            <label for="title">Message Title - English</label>
                             <input type="text" id="title" name="title" class="form-control">
                         </div>
                         <div class="control-group col-12">
-                            <label for="body">Message</label>
+                            <label for="title_fr">Titre du message - Français</label>
+                            <input type="text" id="title_fr" name="title_fr" class="form-control">
+                        </div>
+                        <div class="control-group col-12">
+                            <label for="body">Message - English</label>
                             <textarea name="body" id="body" class="form-control"></textarea>
                         </div>
                         <div class="control-group col-12">
-                            <label for="category">Category</label>
-                            <select name="categorys_id" id="category" class="form-control">
-                                <option value="">Select category</option>
-                                @foreach($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->category }}</option>
-                                @endforeach
-                            </select>
+                            <label for="body_fr">Message - Français</label>
+                            <textarea name="body_fr" id="body_fr" class="form-control"></textarea>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -45,5 +49,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection

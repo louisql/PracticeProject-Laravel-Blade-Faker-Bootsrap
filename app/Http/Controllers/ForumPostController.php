@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ForumPost;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ForumPostController extends Controller
 {
@@ -14,7 +15,10 @@ class ForumPostController extends Controller
      */
     public function index()
     {
-        $forums = ForumPost::all();
+        // $forums = ForumPost::all();
+        $forums =  ForumPost::selectForumPost();
+        // echo $forums;
+        // exit();
         return view('forum.index', ['forums'=>$forums]);
     }
 
@@ -25,7 +29,7 @@ class ForumPostController extends Controller
      */
     public function create()
     {
-        //
+        return view('forum.create');
     }
 
     /**
@@ -36,8 +40,16 @@ class ForumPostController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $newPost = ForumPost::create([
+            'title' => $request->title,
+            'title_fr' => $request->title_fr,
+            'body'  => $request->body,
+            'body_fr'  => $request->body_fr,
+            'user_id' => Auth::user()->id,
+        ]);
+
+        return redirect(route('forum.show', $newPost->id));
+}
 
     /**
      * Display the specified resource.
@@ -47,7 +59,12 @@ class ForumPostController extends Controller
      */
     public function show(ForumPost $forumPost)
     {
-        //
+        $forums =  ForumPost::selectForumPost();
+
+        echo $forumPost;
+        exit;
+
+        return view('forum.show', ['forumPost' => $forumPost]);
     }
 
     /**
@@ -58,7 +75,7 @@ class ForumPostController extends Controller
      */
     public function edit(ForumPost $forumPost)
     {
-        //
+        return view('forum.edit', ['forumPost' => $forumPost]);
     }
 
     /**
@@ -70,7 +87,12 @@ class ForumPostController extends Controller
      */
     public function update(Request $request, ForumPost $forumPost)
     {
-        //
+        $forumPost->update([
+            'title' => $request->title,
+            'body' => $request->body
+        ]);
+
+        return redirect(route('forum.show', $forumPost->id));
     }
 
     /**
@@ -81,6 +103,8 @@ class ForumPostController extends Controller
      */
     public function destroy(ForumPost $forumPost)
     {
-        //
+        $forumPost->delete();
+
+        return redirect(route('forum.index'));
     }
 }

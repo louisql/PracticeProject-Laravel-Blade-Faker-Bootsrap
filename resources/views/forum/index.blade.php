@@ -21,12 +21,6 @@
         </header>
         <!-- Post Content-->
         <div class="row">
-        <div class="col-12 text-center mt-2">
-
-            <button>
-                     Ajouter un article
-            </button>
-        </div>
 
         <div class="container">
         <div class="row">
