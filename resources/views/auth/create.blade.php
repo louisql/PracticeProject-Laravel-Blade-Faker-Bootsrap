@@ -42,6 +42,43 @@
                                     </div>
                                 @endif
                             </div>
+
+                            <div class="form-group mb-3">
+                                <input type="text" placeholder="Adresse" class="form-control" name="adresse">
+                                @if($errors->has('adresse'))
+                                    <div class="text-danger mt-2">
+                                        {{ $errors->first('adresse')}}
+                                    </div>
+                                @endif
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <input type="text" placeholder="phone" class="form-control" name="phone">
+                                @if($errors->has('phone'))
+                                    <div class="text-danger mt-2">
+                                        {{ $errors->first('phone')}}
+                                    </div>
+                                @endif
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <input type="date" placeholder="date_de_naissance" class="form-control" name="date_de_naissance">
+                                @if($errors->has('date_de_naissance'))
+                                    <div class="text-danger mt-2">
+                                        {{ $errors->first('date_de_naissance')}}
+                                    </div>
+                                @endif
+                            </div>
+                            <select name="ville_id" id="">
+                                @forelse($villes as $ville)
+                                    <option id="{{ $ville->id}}" value="{{ $ville->id}}">{{ $ville->nom}}</option>
+                                @empty
+                                    <option class="text-danger">Auncune Ville</option>
+                                @endforelse
+                        </select>
+
+
+
                             <div class="d-grid mx-auto">
                                 <input type="submit" value="Sauvegarder" class="btn btn-dark btn-block">
                             </div>
