@@ -6,6 +6,8 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\EtudiantController;
 
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,3 +66,14 @@ Route::post('new-password/{user}/{tempPassword}', [CustomAuthController::class, 
 
 use App\Http\Controllers\LocalizationController;
 Route::get('/lang/{locale}', [LocalizationController::class, 'index'])->name('lang');
+
+
+use App\Http\Controllers\ForumPostController;
+Route::get('forum', [ForumPostController::class, 'index'])->name('forum.index')->middleware('auth');
+Route::get('forum/{forumPost}', [ForumPostController::class, 'show'])->name('forum.show')->middleware('auth');
+Route::get('forum-create', [ForumPostController::class, 'create'])->name('forum.create')->middleware('auth');
+Route::post('forum-create', [ForumPostController::class, 'store'])->name('forum.store')->middleware('auth');
+Route::get('forum-edit/{forumPost}', [ForumPostController::class, 'edit'])->name('forum.edit')->middleware('auth');
+Route::put('forum-edit/{forumPost}', [ForumPostController::class, 'update'])->middleware('auth');
+Route::delete('forum-edit/{forumPost}', [ForumPostController::class, 'destroy'])->middleware('auth');
+Route::get('/blog-pdf/{blogPost}', [ForumPostController::class, 'pdf'])->name('blog.pdf')->middleware('auth');
