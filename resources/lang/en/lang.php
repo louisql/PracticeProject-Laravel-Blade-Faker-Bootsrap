@@ -9,7 +9,7 @@ return [
     'msg_success' => 'Password reseted',
     'home' => 'Home',
     'my_account' => 'My Account',
-    'sample_post' => 'Example',
+    'sample_post' => 'Forum',
     'students' => 'Students',
     'logout' => 'Logout',
     'login' => 'Login',

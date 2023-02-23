@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+// use App\Models\ForumPost;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,7 +20,7 @@ class ForumPost extends Model
         'user_id'
     ];
 
-    public function blogHasUser(){
+    public function forumPostHasUser(){
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 }

@@ -14,7 +14,8 @@ class ForumPostController extends Controller
      */
     public function index()
     {
-        return view('post');
+        $forums = ForumPost::all();
+        return view('forum.index', ['forums'=>$forums]);
     }
 
     /**

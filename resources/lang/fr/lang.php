@@ -9,7 +9,7 @@ return [
     'msg_success' => 'Mot de passe reinitialisé',
     'home' => 'Accueil',
     'my_account' => 'Mon compte',
-    'sample_post' => 'Exemple',
+    'sample_post' => 'Forum',
     'students' => 'Étudients',
     'logout' => 'Déconnexion',
     'login' => 'Connexion',
