@@ -4,6 +4,7 @@ return [
     'my_blog'   => 'My Blog',
     'reading_title'   => 'Good reading',
     'add_post'     => 'Add Post',
+    'add_directory'     => 'Upload a file',
     'hello'     => 'Hello',
     'msg_1' => 'User recorded. Check your email',
     'msg_success' => 'Password reseted',
@@ -13,6 +14,7 @@ return [
     'students' => 'Students',
     'logout' => 'Logout',
     'login' => 'Login',
-    'registration' => 'Registration'
+    'registration' => 'Registration',
+    'directory' => 'Directory'
 ];
 

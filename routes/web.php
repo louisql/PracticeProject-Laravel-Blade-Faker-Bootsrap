@@ -77,3 +77,9 @@ Route::get('forum-edit/{forumPost}', [ForumPostController::class, 'edit'])->name
 Route::put('forum-edit/{forumPost}', [ForumPostController::class, 'update'])->middleware('auth');
 Route::delete('forum-edit/{forumPost}', [ForumPostController::class, 'destroy'])->middleware('auth');
 Route::get('/blog-pdf/{blogPost}', [ForumPostController::class, 'pdf'])->name('blog.pdf')->middleware('auth');
+
+
+use App\Http\Controllers\RepertoireController;
+Route::get('repertoire', [RepertoireController::class, 'index'])->name('repertoire.index')->middleware('auth');
+Route::get('repertoire-create', [RepertoireController::class, 'create'])->name('repertoire.create')->middleware('auth');
+

@@ -34,7 +34,7 @@
                 <ul class="navbar-nav ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('index')}}"> @lang('lang.home')</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('forum.index')}}"> @lang('lang.sample_post')</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('contact')}}">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('repertoire.index')}}">@lang('lang.directory')</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('etudiant')}}"> @lang('lang.students')</a></li>
                     
                     @guest
@@ -47,9 +47,6 @@
                     @else
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('dashboard')}}"> @lang('lang.my_account')</a></li>
 
-                    <li class="nav-item">
-                        <a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('dashboard')}}">Blogs</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('logout')}}">@lang('lang.logout')</a>
                     </li>

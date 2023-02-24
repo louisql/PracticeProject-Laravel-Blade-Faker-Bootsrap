@@ -4,25 +4,25 @@
 
 @section('content')
 
- <!-- Page Header-->
- <!-- <header class="masthead" style="background-image: url('assets/img/post-bg.jpg')"> -->
- <header class="masthead" style="background-image: url({{ asset('assets/img/post-bg.jpg') }})">
+<!-- Page Header-->
+<!-- <header class="masthead" style="background-image: url('assets/img/post-bg.jpg')"> -->
+<header class="masthead" style="background-image: url({{ asset('assets/img/post-bg.jpg') }})">
 
-            <div class="container position-relative px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-10 col-lg-8 col-xl-7">
-                        <div class="post-heading">
-                            <h1>Forum</h1>
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                    <h1>Forum</h1>
 
-                        </div>
-                    </div>
                 </div>
             </div>
-        </header>
-        <!-- Post Content-->
-        <div class="row">
+        </div>
+    </div>
+</header>
+<!-- Post Content-->
+<div class="row">
 
-        <div class="container">
+    <div class="container">
         <div class="row">
             <div class="col-12 text-center pt-5">
                 <h1 class="display-one">
@@ -52,9 +52,9 @@
                         <div class="card-body">
                             <ul>
                                 @forelse($forums as $forum)
-                                        <li><a href="{{ route('forum.show', $forum->id)}}">{{ $forum->title }}</a> - {{ $forum->created_at }}</li>
+                                <li><a href="{{ route('forum.show', $forum->id)}}">{{ $forum->title }}</a> - {{ $forum->created_at }}</li>
                                 @empty
-                                        <li class="text-danger">Aucun article de forum disponible</li>
+                                <li class="text-danger">Aucun article de forum disponible</li>
                                 @endforelse
                             </ul>
                         </div>
@@ -63,6 +63,6 @@
             </div>
         </div>
     </div>
-    </div>
+</div>
 
 @endsection
