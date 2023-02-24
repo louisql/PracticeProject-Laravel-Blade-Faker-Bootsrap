@@ -28,9 +28,6 @@
   </div>
   <div class="row text-center mb-2">
     <div class="col-4">
-      <a href="{{route('blog.pdf', $forumPost->id)}}" class="btn btn-warning">PDF</a>
-    </div>
-    <div class="col-4">
       <a href="{{route('forum.edit', $forumPost->id)}}" class="btn btn-success">Mettre a jour</a>
     </div>
     <div class="col-4">

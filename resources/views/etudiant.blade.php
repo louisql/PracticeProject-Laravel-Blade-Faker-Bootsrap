@@ -20,9 +20,7 @@
             </div>
         </header>
         <!-- Main Content-->
-        <a href="{{ route('create')}}" class="btn btn-outline-primary">
-            Ajouter un Étudiant
-        </a>
+
         <main class="mb-4">
                     <!-- <div class="card"> -->
                     <!-- <div class="col-md-4"> -->

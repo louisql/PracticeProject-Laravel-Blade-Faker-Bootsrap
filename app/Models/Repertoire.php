@@ -27,7 +27,9 @@ class Repertoire extends Model
         
         $query = Repertoire::select('id', 
         DB::raw("(case when title$lang is null then title else title$lang end) as title"),
-        'created_at'
+        'created_at',
+        'url',
+        'user_id'
         )
         ->orderby('created_at')
         ->get();

@@ -52,7 +52,8 @@
                         <div class="card-body">
                             <ul>
                                 @forelse($forums as $forum)
-                                <li><a href="{{ route('forum.show', $forum->id)}}">{{ $forum->title }}</a> - {{ $forum->created_at }}</li>
+
+                                <li><a href="{{ route('forum.show', $forum->id)}}">{{ $forum->title }}</a> - {{ $forum->created_at }} - {{ $forum->forumPostHasUser->name }}</li>
                                 @empty
                                 <li class="text-danger">Aucun article de forum disponible</li>
                                 @endforelse

@@ -81,6 +81,10 @@ Route::get('/blog-pdf/{blogPost}', [ForumPostController::class, 'pdf'])->name('b
 
 use App\Http\Controllers\RepertoireController;
 Route::get('repertoire', [RepertoireController::class, 'index'])->name('repertoire.index')->middleware('auth');
+Route::get('repertoire-edit/{repertoire}', [RepertoireController::class, 'edit'])->name('repertoire.edit')->middleware('auth');
+Route::put('repertoire-edit/{repertoire}', [RepertoireController::class, 'update'])->middleware('auth');
+
 Route::get('repertoire-create', [RepertoireController::class, 'create'])->name('repertoire.create')->middleware('auth');
 Route::post('repertoire-create', [RepertoireController::class, 'store'])->name('repertoire.store')->middleware('auth');
 
+Route::get('repertoire-download', [RepertoireController::class, 'download'])->name('repertoire.download')->middleware('auth');

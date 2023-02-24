@@ -53,7 +53,12 @@
                 <div class="card-body">
                     <ul>
                         @forelse($repertoires as $repertoire)
-                                <li><a href="#">{{ $repertoire->title }}</a> - {{ $repertoire->created_at }}</li>
+                                <li>{{ $repertoire->title }} - {{ $repertoire->created_at }} - {{$repertoire->url}}</li>
+                                <li><a href="{{ route('repertoire.download', ['file_path' => $repertoire->url]) }}">Télécharger</a></li>
+                                <li>Autheur: {{ $repertoire->RepertoireHasUser->name }}</li>
+                                <li><a href="{{ route('repertoire.edit', $repertoire->id)}}">Modifier</a></li>
+
+
                         @empty
                                 <li class="text-danger">Aucun article de repertoire disponible</li>
                         @endforelse

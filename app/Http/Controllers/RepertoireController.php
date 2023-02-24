@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Repertoire;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class RepertoireController extends Controller
 {
@@ -62,10 +63,32 @@ class RepertoireController extends Controller
             'title_fr' => $request->title_fr,
             'url'  => $path,
             'user_id' => Auth::user()->id,
-        ]);
+        ]); 
 
         return redirect(route('repertoire.index'));
     }
+
+    /**
+     * Download the file from a link
+     * 
+     * @param  \App\Models\Repertoire  $repertoire
+     * @return \Illuminate\Http\Response
+     */
+
+    public function download(Request $request)
+{
+    // Retrieve the file path from the request
+    $filePath = $request->input('file_path');
+
+    // Check if the file exists
+    if (Storage::exists($filePath)) {
+        // Return the file as a download response
+        return response()->download(storage_path('app/'.$filePath));
+    } else {
+        // File does not exist
+        abort(404);
+    }
+}
 
     /**
      * Display the specified resource.
@@ -86,7 +109,7 @@ class RepertoireController extends Controller
      */
     public function edit(Repertoire $repertoire)
     {
-        //
+        return view('repertoire.edit', ['repertoire' => $repertoire]);
     }
 
     /**
@@ -98,7 +121,12 @@ class RepertoireController extends Controller
      */
     public function update(Request $request, Repertoire $repertoire)
     {
-        //
+        $repertoire->update([
+            'title' => $request->title,
+            'title_fr' => $request->title_fr,
+        ]);
+
+        return redirect(route('repertoire.index'));
     }
 
     /**

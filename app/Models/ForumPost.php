@@ -30,7 +30,8 @@ class ForumPost extends Model
         
         $query = ForumPost::select('id', 
         DB::raw("(case when title$lang is null then title else title$lang end) as title"),
-        'created_at'
+        'created_at',
+        'user_id'
         )
         ->orderby('created_at')
         ->get();
