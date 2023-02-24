@@ -28,14 +28,29 @@
                     <div class="control-group col-12">
                         <label for="title">File Title - English</label>
                         <input type="text" id="title" name="title" class="form-control">
+                        @if($errors->has('title'))
+                                    <div class="text-danger mt-2">
+                                        {{ $errors->first('title')}}
+                                    </div>
+                        @endif
                     </div>
                     <div class="control-group col-12">
                         <label for="title_fr">Titre du fichier - Français</label>
                         <input type="text" id="title_fr" name="title_fr" class="form-control">
+                        @if($errors->has('title_fr'))
+                                    <div class="text-danger mt-2">
+                                        {{ $errors->first('title_fr')}}
+                                    </div>
+                        @endif
                     </div>
                     <div class="control-group col-12">
-                        <label for="file">Example file input</label>
-                        <input type="file" class="form-control-file" id="file" name="file">
+                        <label for="url">Example file input</label>
+                        <input type="file" class="form-control-file" id="url" name="url">
+                        @if($errors->has('url'))
+                                    <div class="text-danger mt-2">
+                                        {{ $errors->first('url')}}
+                                    </div>
+                        @endif
                     </div>
                 </div>
                 <div class="card-footer">

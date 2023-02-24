@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Repertoire;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RepertoireController extends Controller
 {
@@ -37,7 +38,33 @@ class RepertoireController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'title_fr' => 'required',
+            'url' => 'required',
+        ]);
+
+        // $input = $request->all();
+
+        if ($request->hasFile('url')){
+            $destination_path = 'public/repertoires/files';
+            $repertoire = $request -> file('url');
+            $repertoire_nom = $repertoire -> getClientOriginalName();
+            $path = $request->file('url')->storeAs($destination_path, $repertoire_nom);
+        }
+
+        // echo ($path);
+        // var_dump ($request->url);
+        // exit;
+
+        $newRepertoire = Repertoire::create([
+            'title' => $request->title,
+            'title_fr' => $request->title_fr,
+            'url'  => $path,
+            'user_id' => Auth::user()->id,
+        ]);
+
+        return redirect(route('repertoire.index'));
     }
 
     /**

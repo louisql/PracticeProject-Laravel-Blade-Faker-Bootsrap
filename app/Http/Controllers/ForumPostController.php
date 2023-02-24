@@ -41,6 +41,13 @@ class ForumPostController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required',
+            'title_fr' => 'required',
+            'body' => 'required|min:6|max:2000',
+            'body_fr' => 'required|min:6|max:2000',
+        ]);
+
         $newPost = ForumPost::create([
             'title' => $request->title,
             'title_fr' => $request->title_fr,
