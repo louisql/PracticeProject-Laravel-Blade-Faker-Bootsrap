@@ -21,6 +21,8 @@
       <hr>
       <p> {!! $forumPost->body !!}</p>
       <p><strong>Author:</strong> {{ $forumPost->forumPostHasUser->name}}</p>
+      <p><strong>Date:</strong> {{ $forumPost->created_at}}</p>
+
       <hr>
     </div>
   </div>

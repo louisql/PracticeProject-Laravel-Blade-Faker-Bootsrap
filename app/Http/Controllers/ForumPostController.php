@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ForumPost;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -59,11 +60,15 @@ class ForumPostController extends Controller
      */
     public function show(ForumPost $forumPost)
     {
-        $forums =  ForumPost::selectForumPost();
+        $forumPost =  ForumPost::selectForumSinglePost($forumPost->id);
 
-        echo $forumPost;
-        exit;
+        // $date = new DateTime($forumPost->created_at);
+        // $formattedDate = $date->format('Y-m-d H:i:s');
+        // $forumPost->created_at = $formattedDate;
 
+        // echo($forumPost->created_at) ;
+        // exit;
+    
         return view('forum.show', ['forumPost' => $forumPost]);
     }
 
