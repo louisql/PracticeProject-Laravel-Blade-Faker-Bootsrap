@@ -20,7 +20,7 @@
     <div class="col-12 pt-2">
       <hr>
       <p> {!! $forumPost->body !!}</p>
-      <p><strong>Author:</strong> {{ $forumPost->forumPostHasUser->name}}</p>
+      <p><strong>@lang('lang.author'):</strong> {{ $forumPost->forumPostHasUser->name}}</p>
       <p><strong>Date:</strong> {{ $forumPost->created_at}}</p>
 
       <hr>
@@ -28,12 +28,12 @@
   </div>
   <div class="row text-center mb-2">
     <div class="col-4">
-      <a href="{{route('forum.edit', $forumPost->id)}}" class="btn btn-success">Mettre a jour</a>
+      <a href="{{route('forum.edit', $forumPost->id)}}" class="btn btn-success">@lang('lang.modify')</a>
     </div>
     <div class="col-4">
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
-        Effacer
+      @lang('lang.delete')
       </button>
     </div>
   </div>
@@ -46,18 +46,18 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Effacer un article</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">@lang('lang.delete')</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Etes-vous certain de vouloir effacer cette donnée?
+      @lang('lang.confirm_delete')
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <form action="{{ route('forum.edit', $forumPost->id)}}" method="post">
           @csrf
           @method('delete')
-          <input type="submit" class="btn btn-danger" value="Effacer">
+          <input type="submit" class="btn btn-danger" value="@lang('lang.delete')">
         </form>
       </div>
     </div>

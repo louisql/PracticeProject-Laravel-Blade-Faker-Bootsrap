@@ -47,16 +47,13 @@
             <div class="row mb-5">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
-                            Liste des articles
-                        </div>
                         <div class="card-body">
     <table class="table">
         <thead>
             <tr>
-                <th>Titre</th>
+                <th>@lang('lang.title')</th>
                 <th>Date</th>
-                <th>Auteur</th>
+                <th>@lang('lang.author')</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -68,9 +65,9 @@
                     <td>{{ $forum->forumPostHasUser->name }}</td>
                     <td>
                         @if($logged_user == $forum->user_id)
-                            <a href="{{ route('forum.edit', $forum->id) }}" class="btn btn-primary">Modifier</a>
+                            <a href="{{ route('forum.edit', $forum->id) }}" class="btn btn-primary">@lang('lang.modify')</a>
                         @endif
-                        <a href="{{ route('forum.show', $forum->id) }}" class="btn btn-info">Afficher</a>
+                        <a href="{{ route('forum.show', $forum->id) }}" class="btn btn-info">@lang('lang.afficher')</a>
                     </td>
                 </tr>
             @empty

@@ -12,7 +12,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="page-heading">
-                    <h1>Information sur un Étudiant</h1>
+                    <h1>@lang('lang.student_information')</h1>
                 </div>
             </div>
         </div>
@@ -45,12 +45,12 @@
             <hr>
         </div>
         <a href="{{ route('edit', $etudiant->id) }}" class="btn btn-outline-primary">
-            Modifier l'Étudiant
+            @lang('lang.modify')
         </a>
 
         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                Effacer
-            </button>
+            @lang('lang.delete')
+        </button>
     </div>
 </div>
 
@@ -59,19 +59,18 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Effacer un article</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">@lang('lang.delete')</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Êtes-vous certain de vouloir effacer ces données ? 
-            </div>
+                @lang('lang.confirm_delete') </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <form action="{{ route('edit', $etudiant->id) }}" method="post">
-                @csrf
-                @method('delete')
-                <input type="submit" class="btn btn-danger" value="Effacer">
-            </form>
+                    @csrf
+                    @method('delete')
+                    <input type="submit" class="btn btn-danger" value="Effacer">
+                </form>
             </div>
         </div>
     </div>

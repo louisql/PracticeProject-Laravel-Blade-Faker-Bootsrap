@@ -8,7 +8,7 @@
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="site-heading">
-          <h1>Modification</h1>
+          <h1>@lang('lang.modify')</h1>
         </div>
       </div>
     </div>
@@ -24,12 +24,9 @@
                 <form method="post">
                     @csrf
                     @method('put')
-                    <div class="card-header">
-                        Formulaire
-                    </div>
                     <div class="card-body">
                         <div class="control-group col-12">
-                            <label for="title">Titre du message</label>
+                            <label for="title">@lang('lang.title')</label>
                             <input type="text" id="title" name="title" class="form-control" value="{{ $forumPost->title}}">
                         </div>
                         <div class="control-group col-12">
@@ -39,7 +36,7 @@
                         
                     </div>
                     <div class="card-footer">
-                        <input type="submit" value="Mettre a jour" class="btn btn-success">
+                        <input type="submit" value="@lang('lang.modify')" class="btn btn-success">
                     </div>
                 </form>
             </div>

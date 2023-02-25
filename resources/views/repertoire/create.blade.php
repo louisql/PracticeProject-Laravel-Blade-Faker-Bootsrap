@@ -8,7 +8,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1> Répertoire - Nouveau</h1>
+                    <h1> @lang('lang.upload_file') </h1>
                 </div>
             </div>
         </div>
@@ -21,40 +21,38 @@
         <div class="card">
             <form method="post" enctype="multipart/form-data">
                 @csrf
-                <div class="card-header">
-                    Formulaire
-                </div>
+
                 <div class="card-body">
                     <div class="control-group col-12">
                         <label for="title">File Title - English</label>
                         <input type="text" id="title" name="title" class="form-control">
                         @if($errors->has('title'))
-                                    <div class="text-danger mt-2">
-                                        {{ $errors->first('title')}}
-                                    </div>
+                        <div class="text-danger mt-2">
+                            {{ $errors->first('title')}}
+                        </div>
                         @endif
                     </div>
                     <div class="control-group col-12">
                         <label for="title_fr">Titre du fichier - Français</label>
                         <input type="text" id="title_fr" name="title_fr" class="form-control">
                         @if($errors->has('title_fr'))
-                                    <div class="text-danger mt-2">
-                                        {{ $errors->first('title_fr')}}
-                                    </div>
+                        <div class="text-danger mt-2">
+                            {{ $errors->first('title_fr')}}
+                        </div>
                         @endif
                     </div>
                     <div class="control-group col-12">
-                        <label for="url">Example file input</label>
+                        <label for="url">@lang('lang.choose_file')</label>
                         <input type="file" class="form-control-file" id="url" name="url">
                         @if($errors->has('url'))
-                                    <div class="text-danger mt-2">
-                                        {{ $errors->first('url')}}
-                                    </div>
+                        <div class="text-danger mt-2">
+                            {{ $errors->first('url')}}
+                        </div>
                         @endif
                     </div>
                 </div>
                 <div class="card-footer">
-                    <input type="submit" value="Sauvegarder" class="btn btn-success">
+                    <input type="submit" value="@lang('lang.save')" class="btn btn-success">
                 </div>
             </form>
         </div>

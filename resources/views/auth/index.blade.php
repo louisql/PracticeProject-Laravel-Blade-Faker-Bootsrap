@@ -51,7 +51,7 @@
                                 @endif
                             </div>
                             <div class="form-group mb-3">
-                                <input type="password" placeholder="Password" class="form-control" name="password">
+                                <input type="password" placeholder="@lang('lang.password')" class="form-control" name="password">
                                 @if($errors->has('password'))
                                     <div class="text-danger mt-2">
                                         {{ $errors->first('password')}}
@@ -62,7 +62,7 @@
                                 <input type="submit" value="@lang('lang.login')" class="btn btn-dark btn-block">
                             </div>
                         </form>
-                        <a href="{{route('forgot.pass')}}">Mot de passe oublié</a>
+                        <a href="{{route('forgot.pass')}}">@lang('lang.forgot_password')</a>
                     </div>
                 </div>
             </div>

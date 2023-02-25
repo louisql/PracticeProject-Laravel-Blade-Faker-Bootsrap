@@ -29,17 +29,17 @@
                     </div>
                     <div class="card-body">
                         <div class="controle-group col-12">
-                            <label for="nom">Nom</label>
+                            <label for="nom">@lang('lang.nom')</label>
                             <input type="text" id="nom" name="nom" class="form-control"> <!-- Ne pas oublier de mettre le name, qui est celui de la base de données -->
                         </div>
 
                         <div class="controle-group col-12">
-                            <label for="adresse">Adresse</label>
+                            <label for="adresse">@lang('lang.adresse')</label>
                             <input type="text" id="adresse" name="adresse" class="form-control"> 
                         </div>
 
                         <div class="controle-group col-12">
-                            <label for="phone">Telephone</label>
+                            <label for="phone">@lang('lang.phone')</label>
                             <input type="text" id="phone" name="phone" class="form-control"> 
                         </div>
 
@@ -49,7 +49,7 @@
                         </div>
 
                         <div class="controle-group col-12">
-                            <label for="date_de_naissance">Date de Naissance</label>
+                            <label for="date_de_naissance">@lang('lang.birthdate')</label>
                             <input type="date" id="date_de_naissance" name="date_de_naissance" class="form-control"> 
                         </div>
 

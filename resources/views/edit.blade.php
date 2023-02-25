@@ -12,7 +12,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="page-heading">
-                    <h1>Modification d'un étudiant</h1>
+                    <h1>@lang('lang.student_update')</h1>
                 </div>
             </div>
         </div>
@@ -31,17 +31,17 @@
                 </div>
                 <div class="card-body">
                     <div class="controle-group col-12">
-                        <label for="nom">Nom</label>
+                        <label for="nom">@lang('lang.nom')</label>
                         <input type="text" id="nom" name="nom" class="form-control" value="{{ $etudiant -> nom }}"> <!-- Ne pas oublier de mettre le name, qui est celui de la base de données -->
                     </div>
 
                     <div class="controle-group col-12">
-                        <label for="adresse">Adresse</label>
+                        <label for="adresse">@lang('lang.adresse')</label>
                         <input type="text" id="adresse" name="adresse" class="form-control" value="{{ $etudiant -> adresse }}">
                     </div>
 
                     <div class="controle-group col-12">
-                        <label for="phone">Telephone</label>
+                        <label for="phone">@lang('lang.phone')</label>
                         <input type="text" id="phone" name="phone" class="form-control" value="{{ $etudiant -> phone }}">
                     </div>
 
@@ -51,7 +51,7 @@
                     </div>
 
                     <div class="controle-group col-12">
-                        <label for="date_de_naissance">Date de Naissance</label>
+                        <label for="date_de_naissance">@lang('lang.birthdate')</label>
                         <input type="date" id="date_de_naissance" name="date_de_naissance" class="form-control" value=" {{ $etudiant -> date_de_naissance }}">
                     </div>
 
@@ -69,7 +69,7 @@
 
                 </div>
                 <div class="card-footer">
-                    <input type="submit" value="Mettre à jour" class="btn btn-success">
+                    <input type="submit" value="@lang('lang.modify')" class="btn btn-success">
                 </div>
             </form>
         </div>

@@ -47,19 +47,16 @@
             <div class="row mb-5">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
-                            Liste des articles
-                        </div>
                         <div class="card-body">
                             @if(count($repertoires) > 0)
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Titre</th>
+                                        <th>@lang('lang.title')</th>
                                         <th>Date</th>
-                                        <th>Télécharger</th>
-                                        <th>Auteur</th>
-                                        <th>Modifier</th>
+                                        <th>@lang('lang.download')</th>
+                                        <th>@lang('lang.author')</th>
+                                        <th>@lang('lang.modify')</th>
                                     </tr>
                                 </thead>
                                 <tbody>

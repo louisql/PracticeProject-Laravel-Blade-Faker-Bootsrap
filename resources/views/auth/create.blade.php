@@ -1,14 +1,24 @@
 @extends('master')
 @section('title', 'Enregistrer')
 @section('content')
+<header class="masthead" style="background-image: url({{ asset('assets/img/about-bg.jpg') }})">
+
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h1>@lang('lang.create_user')</h1>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
 <main class="login-form">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-4 pt-4">
                 <div class="card">
-                    <h3 class="card-header text-center">
-                        Enregister
-                    </h3>
                     <div class="card-body">
                         @if(session('success'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -80,7 +90,7 @@
 
 
                             <div class="d-grid mx-auto">
-                                <input type="submit" value="Sauvegarder" class="btn btn-dark btn-block">
+                                <input type="submit" value="@lang('lang.save')" class="btn btn-dark btn-block">
                             </div>
                         </form>
                     </div>
