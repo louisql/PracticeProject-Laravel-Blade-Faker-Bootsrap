@@ -78,8 +78,10 @@ class ForumPostController extends Controller
 
         // echo($forumPost->created_at) ;
         // exit;
+
+        $logged_user = Auth::user()->id;
     
-        return view('forum.show', ['forumPost' => $forumPost]);
+        return view('forum.show', ['forumPost' => $forumPost, 'logged_user'=>$logged_user]);
     }
 
     /**
@@ -90,7 +92,10 @@ class ForumPostController extends Controller
      */
     public function edit(ForumPost $forumPost)
     {
-        return view('forum.edit', ['forumPost' => $forumPost]);
+
+        $logged_user = Auth::user()->id;
+
+        return view('forum.edit', ['forumPost' => $forumPost, 'logged_user'=>$logged_user]);
     }
 
     /**
