@@ -18,7 +18,10 @@ class RepertoireController extends Controller
     {
         $repertoires =  Repertoire::selectRepertoire();
 
-        return view('repertoire.index', ['repertoires'=>$repertoires]);
+        $logged_user = Auth::user()->id;
+
+
+        return view('repertoire.index', ['repertoires' => $repertoires, 'logged_user' => $logged_user]);
     }
 
     /**
@@ -47,10 +50,10 @@ class RepertoireController extends Controller
 
         // $input = $request->all();
 
-        if ($request->hasFile('url')){
+        if ($request->hasFile('url')) {
             $destination_path = 'public/repertoires/files';
-            $repertoire = $request -> file('url');
-            $repertoire_nom = $repertoire -> getClientOriginalName();
+            $repertoire = $request->file('url');
+            $repertoire_nom = $repertoire->getClientOriginalName();
             $path = $request->file('url')->storeAs($destination_path, $repertoire_nom);
         }
 
@@ -63,7 +66,7 @@ class RepertoireController extends Controller
             'title_fr' => $request->title_fr,
             'url'  => $path,
             'user_id' => Auth::user()->id,
-        ]); 
+        ]);
 
         return redirect(route('repertoire.index'));
     }
@@ -76,19 +79,19 @@ class RepertoireController extends Controller
      */
 
     public function download(Request $request)
-{
-    // Retrieve the file path from the request
-    $filePath = $request->input('file_path');
+    {
+        // Retrieve the file path from the request
+        $filePath = $request->input('file_path');
 
-    // Check if the file exists
-    if (Storage::exists($filePath)) {
-        // Return the file as a download response
-        return response()->download(storage_path('app/'.$filePath));
-    } else {
-        // File does not exist
-        abort(404);
+        // Check if the file exists
+        if (Storage::exists($filePath)) {
+            // Return the file as a download response
+            return response()->download(storage_path('app/' . $filePath));
+        } else {
+            // File does not exist
+            abort(404);
+        }
     }
-}
 
     /**
      * Display the specified resource.
@@ -137,6 +140,15 @@ class RepertoireController extends Controller
      */
     public function destroy(Repertoire $repertoire)
     {
-        //
+        $filePath = $repertoire->url;
+
+        if (Storage::exists($filePath)) {
+            Storage::delete($filePath);
+        }
+
+
+        $repertoire->delete();
+
+        return redirect(route('repertoire.index'));
     }
 }

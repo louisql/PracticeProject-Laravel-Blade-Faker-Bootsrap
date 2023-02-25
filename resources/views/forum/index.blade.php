@@ -20,6 +20,7 @@
     </div>
 </header>
 <!-- Post Content-->
+<!-- {{ $logged_user }} -->
 <div class="row">
 
     <div class="container">
@@ -50,15 +51,36 @@
                             Liste des articles
                         </div>
                         <div class="card-body">
-                            <ul>
-                                @forelse($forums as $forum)
-
-                                <li><a href="{{ route('forum.show', $forum->id)}}">{{ $forum->title }}</a> - {{ $forum->created_at }} - {{ $forum->forumPostHasUser->name }}</li>
-                                @empty
-                                <li class="text-danger">Aucun article de forum disponible</li>
-                                @endforelse
-                            </ul>
-                        </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Date</th>
+                <th>Auteur</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse($forums as $forum)
+                <tr>
+                    <td>{{ $forum->title }}</td>
+                    <td>{{ $forum->created_at }}</td>
+                    <td>{{ $forum->forumPostHasUser->name }}</td>
+                    <td>
+                        @if($logged_user == $forum->user_id)
+                            <a href="{{ route('forum.edit', $forum->id) }}" class="btn btn-primary">Modifier</a>
+                        @endif
+                        <a href="{{ route('forum.show', $forum->id) }}" class="btn btn-info">Afficher</a>
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="4" class="text-danger">Aucun article de forum disponible</td>
+                </tr>
+            @endforelse
+        </tbody>
+    </table>
+</div>
                     </div>
                 </div>
             </div>

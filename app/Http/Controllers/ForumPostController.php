@@ -18,9 +18,12 @@ class ForumPostController extends Controller
     {
         // $forums = ForumPost::all();
         $forums =  ForumPost::selectForumPost();
-        // echo $forums;
+        
+        $logged_user = Auth::user()->id;
+        // echo $logged_user;
         // exit();
-        return view('forum.index', ['forums'=>$forums]);
+        
+        return view('forum.index', ['forums'=>$forums, 'logged_user'=>$logged_user]);
     }
 
     /**
