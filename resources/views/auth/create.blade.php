@@ -29,7 +29,7 @@
                         <form action="{{route('user.store')}}" method="post">
                             @csrf
                             <div class="form-group mb-3">
-                                <input type="text" placeholder="Name" class="form-control" name="name" value="{{ old('name')}}">
+                                <input type="text" placeholder="@lang('lang.nom')" class="form-control" name="name" value="{{ old('name')}}">
                                 @if($errors->has('name'))
                                     <div class="text-danger mt-2">
                                         {{ $errors->first('name')}}
@@ -45,7 +45,7 @@
                                 @endif
                             </div>
                             <div class="form-group mb-3">
-                                <input type="password" placeholder="Password" class="form-control" name="password">
+                                <input type="password" placeholder="@lang('lang.password')" class="form-control" name="password">
                                 @if($errors->has('password'))
                                     <div class="text-danger mt-2">
                                         {{ $errors->first('password')}}
@@ -54,7 +54,7 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <input type="text" placeholder="Adresse" class="form-control" name="adresse">
+                                <input type="text" placeholder="@lang('lang.adresse')" class="form-control" name="adresse">
                                 @if($errors->has('adresse'))
                                     <div class="text-danger mt-2">
                                         {{ $errors->first('adresse')}}
@@ -63,7 +63,7 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <input type="text" placeholder="phone" class="form-control" name="phone">
+                                <input type="text" placeholder="@lang('lang.phone')" class="form-control" name="phone">
                                 @if($errors->has('phone'))
                                     <div class="text-danger mt-2">
                                         {{ $errors->first('phone')}}
